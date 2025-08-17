@@ -114,11 +114,11 @@ if df is not None:
                 st.write("`pipe.feature_names_in_` not available on this pipeline.")
 
         try:
-            # Model outputs log(price); convert back to INR
+            # Model outputs log(price); convert back to PKR
             pred_log = pipe.predict(input_df)[0]
-            pred_inr = float(np.exp(pred_log)) * 3
+            pred_pkr = float(np.exp(pred_log)) * 2.2  # Convert to PKR (assumed conversion rate)
 
-            st.success(f"💰 Predicted Price: ₹{pred_inr:,.0f}")
+            st.success(f"💰 Predicted Price: {pred_pkr:,.0f}")
         except Exception as e:
             st.error(f"Prediction error: {e}")
 else:
